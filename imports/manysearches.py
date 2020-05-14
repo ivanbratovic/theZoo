@@ -45,16 +45,16 @@ class MuchSearch(object):
             self.ar = self.db.query(self.prequery + self.query, [self.param])
             self.print_payloads(self.ar)
         else:
-            print(red("[!]") + " Filter did not match any malware :(\n")
+            print((red("[!]") + " Filter did not match any malware :(\n"))
 
         return self.hits
 
     # Dynamicly build the query
     def build_query(self, dic):
         qlist = []
-        for key, val in dic.items():
+        for key, val in list(dic.items()):
             if isinstance(val, (list, tuple)):
-                tmp = str(key) + ' in (' + ','.join(map(lambda x: '\'' + str(x) + '\'', val)) + ') '
+                tmp = str(key) + ' in (' + ','.join(['\'' + str(x) + '\'' for x in val]) + ') '
             else:
                 tmp = str(key) + '=' + '\'' + str(val) + '\''
             qlist.append(' ' + tmp + ' ')
@@ -66,4 +66,4 @@ class MuchSearch(object):
         for malware in m:
             table.add_row(malware)
         print(table)
-        print(bold(green("[+]")) + " Total records found: %s" % len(m) + "\n")
+        print((bold(green("[+]")) + " Total records found: %s" % len(m) + "\n"))

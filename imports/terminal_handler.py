@@ -74,7 +74,7 @@ class Controller:
 				if self.currentmodule is not None:
 					try:
 						just_print = self.db.query("SELECT NAME FROM Malwares WHERE ID=?", self.currentmodule)[0][0]
-						cmd = raw_input(
+						cmd = input(
 							bold(green('mdb ')) + bold(blue(just_print)) + green('#> ')).strip()
 					except:
 						self.currentmodule = None
@@ -82,10 +82,10 @@ class Controller:
 						break
 					
 				else:
-					cmd = raw_input(
+					cmd = input(
 						bold(green('mdb ')) + green('#> ')).strip()
 			except KeyboardInterrupt:
-				print(bold(blue("\n\n[*]")) + " Hope you enjoyed your visit at" + bold(red(" theZoo")) + "!")
+				print((bold(blue("\n\n[*]")) + " Hope you enjoyed your visit at" + bold(red(" theZoo")) + "!"))
 				exit()
 
 			self.actOnCommand(cmd)
@@ -98,7 +98,7 @@ class Controller:
 			if cmd == 'help':
 				print(" Available commands:\n")
 				for (cmd, desc) in self.commands:
-					print("\t%s\t%s" % ('{0: <12}'.format(cmd), desc))
+					print(("\t%s\t%s" % ('{0: <12}'.format(cmd), desc)))
 				print('')
 				return
 
@@ -109,7 +109,7 @@ class Controller:
 					args = cmd.rsplit(' ')[1:]
 					manySearch.sort(args)
 				except:
-					print(red('[!]') + 'Uh oh, Invalid query.')
+					print((red('[!]') + 'Uh oh, Invalid query.'))
 				return
 
 			if cmd == 'exit':
@@ -122,16 +122,16 @@ class Controller:
 				return
 
 			if cmd == 'report-mal':
-				rprt_name = raw_input("Name of malware: ")
-				rprt_type = raw_input("Type of malware: ")
-				rprt_version = raw_input("Version: ")
-				rprt_lang = raw_input("Language: ")
-				rprt_src = raw_input("Source / Binary (s/b): ")
-				rprt_arch = raw_input("Win32, ARM etc. ? ")
-				rprt_reporter = raw_input(
+				rprt_name = input("Name of malware: ")
+				rprt_type = input("Type of malware: ")
+				rprt_version = input("Version: ")
+				rprt_lang = input("Language: ")
+				rprt_src = input("Source / Binary (s/b): ")
+				rprt_arch = input("Win32, ARM etc. ? ")
+				rprt_reporter = input(
 					"Your name for a thank you note on theZoo.\n"
 					"Please notice that this will be public!\n\nName: ")
-				rprt_comments = raw_input("Comments? ")
+				rprt_comments = input("Comments? ")
 
 				report = ("//%s//\n" % rprt_name)
 				report += ("///type/%s///\n" % rprt_type)
@@ -155,7 +155,7 @@ class Controller:
 				print("")
 				print("Please create an archive file with the structure described in the README file")
 				print("And attach it to the email. ")
-				print("Please send this report to %s" % email)
+				print(("Please send this report to %s" % email))
 
 				return
 
@@ -164,7 +164,7 @@ class Controller:
 				try:
 					update_handler.get_malware(self.currentmodule)
 				except:
-					print(red('[-] ') + 'Error getting malware.')
+					print((red('[-] ') + 'Error getting malware.'))
 				return
 			# If used the 'use' command
 			if re.match('^use', cmd):
@@ -189,7 +189,7 @@ class Controller:
 
 			if cmd == 'info':
 				if self.currentmodule is None:
-					print(red("[!] ") + "First select a malware using the \'use\' command")
+					print((red("[!] ") + "First select a malware using the \'use\' command"))
 					return
 				m = self.db.get_mal_info(self.currentmodule)
 				manySearch = manysearches.MuchSearch()

@@ -35,12 +35,12 @@ _history = []
 def set_history_length(n):
     global _history_length
     if n < 0:
-        _history_length = sys.maxint
+        _history_length = sys.maxsize
     else:
         _history_length = n
 
 def get_history_length():
-    if _history_length == sys.maxint:
+    if _history_length == sys.maxsize:
         return -1
     return _history_length
 
@@ -54,7 +54,7 @@ def read_history_file(filename):
         return s
     fp = open(filename)
     all_lines = fp.read().splitlines()
-    _history[:] = filter(clean, all_lines)[:_history_length]
+    _history[:] = list(filter(clean, all_lines))[:_history_length]
     fp.close()
 
 def write_history_file(filename):

@@ -24,8 +24,8 @@ from os import remove, rename
 if sys.version_info.major == 3:
 	from urllib.request import urlopen
 elif sys.version_info.major == 2:
-	from urllib2 import urlopen
-	import urllib2
+	from urllib.request import urlopen
+	import urllib.request, urllib.error, urllib.parse
 else:
 	sys.stderr.write("What kind of sorcery is this?!\n")
 
@@ -56,16 +56,16 @@ class Updater:
 		:return:
 		'''
 		if globals.vars.DEBUG_LEVEL is 1:
-			print(locals())
+			print((locals()))
 		response = urlopen(
 			globals.vars.giturl_dl + globals.vars.maldb_ver_file)
 		new_maldb_ver = response.read()
 		if new_maldb_ver == curr_db_version:
-			print(green('[+]') + " theZoo is up to date.\n" + green('[+]') + " You are at " + new_maldb_ver + " which is the latest version.")
+			print((green('[+]') + " theZoo is up to date.\n" + green('[+]') + " You are at " + new_maldb_ver + " which is the latest version."))
 			return
 
-		print(red('[+]') + " A newer version is available: " + new_maldb_ver + "!")
-		print(red('[+]') + " Updating...")
+		print((red('[+]') + " A newer version is available: " + new_maldb_ver + "!"))
+		print((red('[+]') + " Updating..."))
 
 		# Get the new DB and update it
 
@@ -97,11 +97,11 @@ class Updater:
 			return False
 		if self.download_from_repo(loc, '.sha256') is False:
 			return False
-		print(bold(green("[+]")) + " Successfully downloaded a new friend.\n")
+		print((bold(green("[+]")) + " Successfully downloaded a new friend.\n"))
 
 	def download_from_repo(self, filepath, suffix=''):
 		if globals.vars.DEBUG_LEVEL is 1:
-			print(locals())
+			print((locals()))
 		file_name = filepath.rsplit('/')[-1] + suffix
 
 		# Dirty way to check if we're downloading a malware
@@ -113,14 +113,14 @@ class Updater:
 		try:
 			u = urlopen(url)
 		except:
-			print(bold(red("[!]")) + " Probably path name in git vs. sqlite does not match.")
-			print(bold(red("[!]")) + " Please try and go to %s or report the malware ID so we can fix it." % url)
+			print((bold(red("[!]")) + " Probably path name in git vs. sqlite does not match."))
+			print((bold(red("[!]")) + " Please try and go to %s or report the malware ID so we can fix it." % url))
 			return False
 		
 		f = open(file_name, 'wb')
 		meta = u.info()
 		file_size = int(meta.getheaders("Content-Length")[0])
-		print("Downloading: %s Bytes: %s" % (file_name, file_size))
+		print(("Downloading: %s Bytes: %s" % (file_name, file_size)))
 		file_size_dl = 0
 		block_sz = 8192
 		while True:
