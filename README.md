@@ -10,6 +10,8 @@
 theZoo is a project created to make the possibility of malware analysis open and available to the public. Since we have found out that almost all versions of malware are very hard to come by in a way which will allow analysis, we have decided to gather all of them for you in an accessible and safe way.
 theZoo was born by Yuval tisf Nativ and is now maintained by Shahak Shalev.
 
+This is my fork of theZoo, adding Python3 support.
+
 **theZoo is open and welcoming visitors!**
 
 If you are about to interact with our community please make sure to read our `CODE-OF-CONDUCT.md` prior to doing so. If you plan to contribute, first - thank you. However, do make sure to follow the standards on `CONTRIBUTING.md`.
@@ -23,7 +25,7 @@ We recommend running them in a VM which has no internet connection (or an intern
 
 ## Getting Started
 
-Clone the repository with `git clone https://www.github.com/ytisf/theZoo`. Go to the directory and run `pip install --user -r requirements.txt`. This should install all latest requirements needed. In total can be "scripted" like so:
+Clone the repository with `git clone https://www.github.com/ivanbratovi/theZoo`. Go to the directory and run `pip install --user -r requirements.txt`. This should install all latest requirements needed. In total can be "scripted" like so:
 
 ```bash
 git clone https://www.github.com/ytisf/theZoo
