@@ -25,17 +25,17 @@ We recommend running them in a VM which has no internet connection (or an intern
 
 ## Getting Started
 
-Clone the repository with `git clone https://www.github.com/ivanbratovi/theZoo`. Go to the directory and run `pip install --user -r requirements.txt`. This should install all latest requirements needed. In total can be "scripted" like so:
+Clone the repository with `git clone https://www.github.com/ivanbratovic/theZoo`. Go to the directory and run `pip install --user -r requirements.txt`. This should install all latest requirements needed. In total can be "scripted" like so:
 
 ```bash
-git clone https://www.github.com/ytisf/theZoo
+git clone https://www.github.com/ivanbratovic/theZoo
 cd theZoo
 pip install --user -r requirements.txt
 ```
 
 Start by running the console:
 
-`python theZoo.py`
+`python3 theZoo.py`
 
 
 ## License
@@ -134,5 +134,6 @@ Get the file you want to submit and just run `python prep_file.py file_tosubmit.
 ### Hopeful
 - [ ] A GUI.
 - [ ] Package releases.
+- [ ] Python3 support in main repository :(
 
 If you have any suggestions or malware that you have indexed (in the manner laid out in the documentation) please send it to us to - thezoo-submissions [a-t] morirt [.d0t.] com - so we can add it for everyone's enjoyment.
