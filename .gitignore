@@ -18,6 +18,8 @@ conf/eula_run.conf
 logo/
 venv/*
 
+# Testing directory
+dir/
 
 *.py[co]
 # Packages
