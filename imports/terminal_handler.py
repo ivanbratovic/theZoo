@@ -84,7 +84,7 @@ class Controller:
 				else:
 					cmd = input(
 						bold(green('mdb ')) + green('#> ')).strip()
-			except KeyboardInterrupt:
+			except (KeyboardInterrupt, EOFError):
 				print((bold(blue("\n\n[*]")) + " Hope you enjoyed your visit at" + bold(red(" theZoo")) + "!"))
 				exit()
 
